@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7AC0F69A1E59061E001BCF6A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0F6991E59061E001BCF6A /* SettingsViewController.swift */; };
 		7ACD3C7C1E4FE78A001856F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD3C7B1E4FE78A001856F7 /* AppDelegate.swift */; };
 		7ACD3C7E1E4FE78A001856F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD3C7D1E4FE78A001856F7 /* ViewController.swift */; };
 		7ACD3C811E4FE78A001856F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ACD3C7F1E4FE78A001856F7 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7AC0F6991E59061E001BCF6A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7ACD3C781E4FE78A001856F7 /* tip_calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tip_calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ACD3C7B1E4FE78A001856F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7ACD3C7D1E4FE78A001856F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				7ACD3C821E4FE78A001856F7 /* Assets.xcassets */,
 				7ACD3C841E4FE78A001856F7 /* LaunchScreen.storyboard */,
 				7ACD3C871E4FE78A001856F7 /* Info.plist */,
+				7AC0F6991E59061E001BCF6A /* SettingsViewController.swift */,
 			);
 			path = tip_calculator;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				7ACD3C7E1E4FE78A001856F7 /* ViewController.swift in Sources */,
 				7ACD3C7C1E4FE78A001856F7 /* AppDelegate.swift in Sources */,
+				7AC0F69A1E59061E001BCF6A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +507,7 @@
 				7ACD3CA21E4FE78A001856F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7ACD3CA31E4FE78A001856F7 /* Build configuration list for PBXNativeTarget "tip_calculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +516,7 @@
 				7ACD3CA51E4FE78A001856F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7ACD3CA61E4FE78A001856F7 /* Build configuration list for PBXNativeTarget "tip_calculatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +525,7 @@
 				7ACD3CA81E4FE78A001856F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
