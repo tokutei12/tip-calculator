@@ -13,14 +13,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
+    @IBOutlet weak var tipView: UIView!
     
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(forName:Notification.Name(rawValue:"TipChanged"),
                                                object:nil, queue:nil,
                                                using:catchNotification)
         billField.becomeFirstResponder()
+        tipView.alpha = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,6 +53,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateTip(_ sender: AnyObject) {
+        if (self.tipView.alpha != 1) {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.tipView.alpha = 1
+            })
+        }
         var tipPercentStr = tipControl.titleForSegment(at: tipControl.selectedSegmentIndex)
         tipPercentStr!.remove(at: tipPercentStr!.index(before: tipPercentStr!.endIndex))
         let tipPercentDouble = (Double(tipPercentStr!) ?? 0)/100.0

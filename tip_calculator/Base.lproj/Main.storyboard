@@ -94,6 +94,7 @@
                         <outlet property="billField" destination="lCR-b8-ffJ" id="MIT-JU-PAa"/>
                         <outlet property="tipControl" destination="B3R-QI-EcI" id="2WZ-X2-Fq9"/>
                         <outlet property="tipLabel" destination="R0C-kH-95O" id="I8v-bs-dEa"/>
+                        <outlet property="tipView" destination="V5W-ym-xLe" id="r1F-4a-obL"/>
                         <outlet property="totalLabel" destination="Ne9-Uu-l5c" id="aHM-xS-cMd"/>
                     </connections>
                 </viewController>
