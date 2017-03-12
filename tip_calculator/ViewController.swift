@@ -15,14 +15,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var tipView: UIView!
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        NotificationCenter.default.addObserver(forName:Notification.Name(rawValue:"TipChanged"),
-                                               object:nil, queue:nil,
-                                               using:catchNotification)
         billField.becomeFirstResponder()
         tipView.alpha = 0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let defaults = UserDefaults.standard
+        self.tipControl.setTitle(defaults.object(forKey: "default_tip_0") as! String? ?? "18%", forSegmentAt: 0)
+        self.tipControl.setTitle(defaults.object(forKey: "default_tip_1") as! String? ?? "20%", forSegmentAt: 1)
+        self.tipControl.setTitle(defaults.object(forKey: "default_tip_2") as! String? ?? "25%", forSegmentAt: 2)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,28 +35,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func catchNotification(notification:Notification) -> Void {
-        guard let userInfo = notification.userInfo,
-            let tipIndex = userInfo["tipIndex"] as? Int,
-            let tipAmount = userInfo["tipAmount"] as? String else {
-                print("No userInfo found in notification")
-                return
-            }
-        self.tipControl.setTitle(tipAmount, forSegmentAt: tipIndex)
-        self.calculateTip(self.tipControl)
-    }
-    
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let settingsViewController = segue.destination as! SettingsViewController
-        settingsViewController.tipAmt1 = tipControl.titleForSegment(at: 0) as String!
-        settingsViewController.tipAmt2 = tipControl.titleForSegment(at: 1) as String!
-        settingsViewController.tipAmt3 = tipControl.titleForSegment(at: 2) as String!
-    }
-    
     @IBAction func calculateTip(_ sender: AnyObject) {
         if (self.tipView.alpha != 1) {
             UIView.animate(withDuration: 0.4, animations: {

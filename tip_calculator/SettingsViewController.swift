@@ -17,6 +17,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var tipAmount1: UILabel!
     @IBOutlet weak var tipAmount2: UILabel!
     @IBOutlet weak var tipAmount3: UILabel!
+    var defaults: UserDefaults?
     
     var currentTipToEdit: Int = 0
     var tipLabels: [UILabel] = [UILabel]()
@@ -38,13 +39,19 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.defaults = UserDefaults.standard
         self.tipSettingsPicker.isHidden = true;
         self.tipSettingsPicker.delegate = self
         self.tipSettingsPicker.dataSource = self
-        self.tipAmount1.text = tipAmt1
-        self.tipAmount2.text = tipAmt2
-        self.tipAmount3.text = tipAmt3
         pickerData = ["10%", "13%", "15%", "18%", "20%", "23%", "25%", "28%", "30%"]
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tipAmount1.text = defaults?.object(forKey: "default_tip_0") as! String? ?? "18%"//tipAmt1
+        self.tipAmount2.text = defaults?.object(forKey: "default_tip_1") as! String? ?? "20%"//tipAmt2
+        self.tipAmount3.text = defaults?.object(forKey: "default_tip_2") as! String? ?? "25%"//tipAmt3
         tipLabels = [tipAmount1, tipAmount2, tipAmount3]
     }
 
@@ -64,6 +71,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         tipLabels[currentTipToEdit].text = pickerData[row]
         self.tipSettingsPicker.isHidden = true;
-        NotificationCenter.default.post(name:Notification.Name(rawValue:"TipChanged"),object: nil, userInfo: ["tipIndex":currentTipToEdit, "tipAmount": pickerData[row]])
+        defaults?.set(pickerData[row], forKey: "default_tip_\(currentTipToEdit)")
+        defaults?.synchronize()
     }
 }
