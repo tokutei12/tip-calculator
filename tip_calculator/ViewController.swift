@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(forName:Notification.Name(rawValue:"TipChanged"),
                                                object:nil, queue:nil,
                                                using:catchNotification)
+        billField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
